@@ -14,18 +14,18 @@ export class RecipeService {
       'Delicious chocolate cake',
       'https://www.crazyforcrust.com/wp-content/uploads/2020/05/chocolate-cake-recipe-9.jpg',
       [
-        new Ingredient("Chocolate", 1000, "grams"),
-        new Ingredient("Flour", 500, "grams"),
-        new Ingredient("Eggs", 2, "unity"),
+        new Ingredient("Chocolate", 1000, "g"),
+        new Ingredient("Flour", 500, "g"),
+        new Ingredient("Eggs", 2, "u"),
         new Ingredient("Milk", 1000, "mls")
       ]),
-    new Recipe('Chocolate Cake',
-      'Delicious chocolate cake',
-      'https://www.crazyforcrust.com/wp-content/uploads/2020/05/chocolate-cake-recipe-9.jpg',
+    new Recipe('Orange Cake',
+      'A naturally delicious orange cake! Yay!',
+      'https://milkandbun.files.wordpress.com/2015/01/orange-cake-1.jpg',
       [
-        new Ingredient("Chocolate", 1000, "grams"),
-        new Ingredient("Flour", 500, "grams"),
-        new Ingredient("Eggs", 2, "unity"),
+        new Ingredient("Orange", 4, "u"),
+        new Ingredient("Flour", 500, "g"),
+        new Ingredient("Eggs", 2, "u"),
         new Ingredient("Milk", 1000, "mls")
       ]),
   ];
@@ -34,6 +34,10 @@ export class RecipeService {
 
   getRecipes(): Recipe[] {
     return this.recipes.slice();
+  }
+
+  getRecipeById(id: number): Recipe {
+    return this.recipes.slice()[id];
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {

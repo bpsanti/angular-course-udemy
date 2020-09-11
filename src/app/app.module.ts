@@ -10,6 +10,8 @@ import { RecipeItemComponent } from './recipe/recipe-list/recipe-item/recipe-ite
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { DropdownDirective } from './shared/dropdown.directive';
+import {AppRoutingModule} from "./app-routing.module";
+import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,11 @@ import { DropdownDirective } from './shared/dropdown.directive';
     RecipeItemComponent,
     RecipeDetailComponent,
     RecipeComponent,
-    DropdownDirective
+    DropdownDirective,
+    RecipeEditComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule
   ],
   providers: [],

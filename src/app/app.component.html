@@ -1,8 +1,3 @@
-<app-header (selectedNavBar)="updateNavView($event)"></app-header>
+<app-header></app-header>
 
-<app-recipe *ngIf="currentNavView === RECIPE">
-</app-recipe>
-
-<app-shopping-list *ngIf="currentNavView === SHOPPING"
-                   class="col-xs-12">
-</app-shopping-list>
+<router-outlet></router-outlet>
