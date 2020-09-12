@@ -1,0 +1,9 @@
+.ingredient-row {
+  margin-top: 8px;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+

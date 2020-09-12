@@ -42,11 +42,9 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   onSubmit(shoppingForm: NgForm) {
     const name = shoppingForm.value.name;
     const amount = shoppingForm.value.amount;
-    const mUnit = 'g';
 
-    let ingredientToAdd = new Ingredient(name,
-                                         amount,
-                                         mUnit);
+    const ingredientToAdd = new Ingredient(name,
+                                           amount);
 
     if (!this.isEditMode) {
       this.shoppingService.addIngredient(ingredientToAdd);

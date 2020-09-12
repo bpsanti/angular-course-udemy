@@ -1,3 +1,11 @@
 a {
   cursor: pointer;
 }
+
+img {
+  max-height: 400px;
+}
+
+button {
+  margin-right: 8px;
+}

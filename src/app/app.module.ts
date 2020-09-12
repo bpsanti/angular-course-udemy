@@ -12,7 +12,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import {AppRoutingModule} from "./app-routing.module";
 import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,11 +27,12 @@ import {FormsModule} from "@angular/forms";
     DropdownDirective,
     RecipeEditComponent
   ],
-    imports: [
-        AppRoutingModule,
-        BrowserModule,
-        FormsModule
-    ],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

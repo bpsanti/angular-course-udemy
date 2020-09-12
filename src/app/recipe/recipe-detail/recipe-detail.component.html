@@ -3,7 +3,6 @@
     <div class="col-xs-12">
       <img src="{{selectedRecipe.imagePath}}"
            alt="{{selectedRecipe.name}}"
-           style="max-height: 200px;"
            class="img-responsive">
     </div>
   </div>
@@ -23,8 +22,8 @@
         </button>
         <ul class="dropdown-menu">
           <li><a (click)="onAddToShoppingList()" style="cursor: pointer">To Shopping List</a></li>
-          <li><a routerLink="edit">Edit Recipe</a></li>
-          <li><a>Delete Recipe</a></li>
+          <li><a (click)="onEditRecipe()">Edit Recipe</a></li>
+          <li><a (click)="onDeleteRecipe()">Delete Recipe</a></li>
         </ul>
       </div>
     </div>
@@ -41,7 +40,7 @@
       <ul class="list-group">
         <li class="list-group-item"
             *ngFor="let ingredient of selectedRecipe.ingredients">
-          {{ingredient.name}} - {{ingredient.amount}}{{ingredient.measuringUnit}}
+          {{ingredient.name}} - {{ingredient.amount}}
         </li>
       </ul>
     </div>
