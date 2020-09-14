@@ -1,10 +1,7 @@
+<ng-template appPlaceholder></ng-template>
+
 <div class="row">
   <div class="col-xs-4 col-xs-offset-4">
-    <div class="alert alert-danger"
-         *ngIf="errorMessage">
-      <p>{{ errorMessage }}</p>
-    </div>
-
     <div class="text-center"
          *ngIf="isLoading">
       <app-loading-spinner>

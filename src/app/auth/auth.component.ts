@@ -1,24 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 
 import {AuthResponseData, AuthService} from "./auth.service";
+import {AlertComponent} from "../alert/alert/alert.component";
+import {PlaceholderDirective} from "../placeholder/placeholder.directive";
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnDestroy {
   isLoading: boolean = false;
   isLoginMode: boolean = true;
   errorMessage: string;
 
-  constructor(private authService: AuthService,
-              private router: Router) {}
+  @ViewChild(PlaceholderDirective)
+  alertHost: PlaceholderDirective;
 
-  ngOnInit(): void {
+  private closeEventSubscription: Subscription;
+
+  constructor(private authService: AuthService,
+              private router: Router,
+              private componentFactory: ComponentFactoryResolver) {}
+
+  ngOnDestroy(): void {
+    this.closeEventSubscription.unsubscribe();
   }
 
   onSwitchMode(): void {
@@ -51,10 +60,24 @@ export class AuthComponent implements OnInit {
       errorMessage => {
         console.log(errorMessage);
         this.errorMessage = errorMessage;
+        this.showErrorAlert(errorMessage);
         this.isLoading = false;
       }
     );
 
     authForm.reset();
+  }
+
+  showErrorAlert(message: string): void {
+    const alertComponent = this.componentFactory.resolveComponentFactory(AlertComponent);
+    const hostViewContainerRef = this.alertHost.viewContainerRef;
+
+    hostViewContainerRef.clear();
+    const alertComponentRef = hostViewContainerRef.createComponent(alertComponent);
+
+    alertComponentRef.instance.message = message;
+    this.closeEventSubscription = alertComponentRef.instance.closeEvent.subscribe(() => {
+      hostViewContainerRef.clear();
+    });
   }
 }
